@@ -136,8 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const pass = document.getElementById('vip-password').value;
         const errorMsg = document.getElementById('vip-error');
         
-        // CONTRASEÑA: 2024 (Cámbiala aquí si quieres)
-        if(pass === "2024") {
+        if(pass === "2015") {
             document.getElementById('vip-lock-screen').style.display = 'none';
             document.getElementById('vip-gallery-content').style.display = 'block';
             setTimeout(updateVipGallery, 100);
@@ -210,4 +209,5 @@ document.addEventListener('DOMContentLoaded', () => {
         updateGallery3D();
         updateVipGallery();
     });
+
 });
