@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam - XatSpace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="innovative-bg">
+        <div class="bg-layer-1"></div>
+        <div class="bg-layer-2"></div>
+    </div>
+
+    <div id="enter-screen">
+        <div class="glitch-wrapper">
+            <button id="enter-btn" data-text="INITIALIZE SYSTEM">INITIALIZE SYSTEM</button>
+        </div>
+    </div>
+
+    <main id="main-layout" class="hidden-layout">
+        
+        <aside class="sidebar-gold">
+            <div class="profile-center-glow">
+                <img src="https://xatimg.com/image/yZfeWZLbcYcR.jpg" alt="Profile" class="pfp-gold">
+            </div>
+            
+            <h1 class="glitch-name" data-text="Sam">Sam</h1>
+            <span class="uid-gold">ID: 1559408423</span>
+
+            <nav class="nav-menu">
+                <button class="nav-btn-gold" onclick="openModal('modal-profile')">
+                    <i class="fa-solid fa-user"></i> Perfil
+                </button>
+                <button class="nav-btn-gold" onclick="openModal('modal-gallery')">
+                    <i class="fa-solid fa-images"></i> Galería 
+                </button>
+                <button class="nav-btn-gold" onclick="openModal('modal-vip')">
+                    <i class="fa-solid fa-lock"></i> Galería VIP
+                </button>
+                <button class="nav-btn-gold" onclick="openModal('modal-friends')">
+                    <i class="fa-solid fa-user-group"></i> Amigos
+                </button>
+                <button class="nav-btn-gold" onclick="openModal('modal-music')">
+                    <i class="fa-solid fa-music"></i> Música
+                </button>
+            </nav>
+        </aside>
+
+        <section class="content-area-gold">
+            <div class="welcome-message">
+                <h2>SAM</h2>
+                <div class="text-wrapper">
+                    <p id="typing-text"></p><span class="cursor">_</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="modal-profile" class="modal">
+        <div class="modal-content gold-border">
+            <span class="close-btn" onclick="closeModal('modal-profile')">&times;</span>
+            <h3>PERFIL</h3>
+            <div class="profile-details">
+                <p>"Siempre pensando en ti."</p>
+                <ul>
+                    <li><strong>Ubicación:</strong>Ecuador</li>
+                    <li><strong>Estado:</strong> Conectado</li>
+                    <li><strong>Nivel:</strong> Premiún</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-gallery" class="modal">
+        <div class="modal-content gold-border gallery-modal-size">
+            <span class="close-btn" onclick="closeModal('modal-gallery')">&times;</span>
+            <h3>GALERÍA</h3>
+            <div class="gallery-container-3d">
+                <div class="photo-carousel-3d" id="carousel-3d-track"></div>
+                <button class="nav-arrow-gold prev-3d" onclick="moveGallery(-1)">‹</button>
+                <button class="nav-arrow-gold next-3d" onclick="moveGallery(1)">›</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-vip" class="modal">
+        <div class="modal-content gold-border gallery-modal-size">
+            <span class="close-btn" onclick="closeModal('modal-vip')">&times;</span>
+            <h3>GALERIA VIP</h3>
+            <div id="vip-lock-screen">
+                <p class="lock-msg">Ingrese código de seguridad:</p>
+                <input type="password" id="vip-password" placeholder="CODE" maxlength="4">
+                <button id="vip-unlock-btn" onclick="checkVipPassword()">DESBLOQUEAR</button>
+                <p id="vip-error" style="color: red; display: none; margin-top: 10px;">Acceso Denegado</p>
+            </div>
+            <div id="vip-gallery-content" style="display: none;">
+                <div class="gallery-container-3d">
+                    <div class="photo-carousel-3d" id="carousel-vip-track"></div>
+                    <button class="nav-arrow-gold prev-3d" onclick="moveVipGallery(-1)">‹</button>
+                    <button class="nav-arrow-gold next-3d" onclick="moveVipGallery(1)">›</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-friends" class="modal">
+        <div class="modal-content gold-border">
+            <span class="close-btn" onclick="closeModal('modal-friends')">&times;</span>
+            <h3>AMIGOS</h3>
+             <div class="friend-list-gold">
+                <div class="friend-item-gold">
+                     <img src="https://i.pravatar.cc/100?img=5" alt="f1"> <span>User_Alpha</span> <small>Online</small>
+                </div>
+                <div class="friend-item-gold">
+                     <img src="https://i.pravatar.cc/100?img=9" alt="f2"> <span>Beta_Ray</span> <small>Busy</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-music" class="modal">
+        <div class="modal-content gold-border">
+            <span class="close-btn" onclick="closeModal('modal-music')">&times;</span>
+            <h3>MÚSICA</h3>
+             <div class="music-player-gold">
+                <div class="vinyl-record-gold" id="vinyl">
+                    <i class="fas fa-compact-disc"></i>
+                </div>
+                <div class="song-info-gold">
+                    <h4 id="song-title">Select Track</h4>
+                    <p id="song-artist">...</p>
+                    <div class="controls-gold">
+                        <button onclick="prevSong()"><i class="fas fa-backward"></i></button>
+                        <button onclick="togglePlay()"><i class="fas fa-play" id="play-icon"></i></button>
+                        <button onclick="nextSong()"><i class="fas fa-forward"></i></button>
+                    </div>
+                    <div class="fake-bar-gold"><div class="fill-gold" id="progress-bar"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audio" loop></audio>
+    <script src="script.js"></script>
+</body>
+</html>
